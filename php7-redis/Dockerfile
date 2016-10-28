@@ -1,4 +1,4 @@
-FROM chrishawes:php7
+FROM chrishawes/php7
 
 ENV PHPREDIS_VERSION 3.0.0
 
