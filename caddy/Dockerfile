@@ -11,11 +11,13 @@ RUN apk --update add openssh-client git tar curl libcap && \
     addgroup -S caddy && adduser -D -S -s /sbin/nologin -G caddy caddy && \
     setcap cap_net_bind_service=+ep /usr/bin/caddy && \
     mkdir -p /root/.caddy && chown -R caddy:caddy /root/.caddy && \
+    mkdir -p /.caddy && chown -R caddy:caddy /.caddy && \
     /usr/bin/caddy -version
 
 
 EXPOSE 80 443 2015
 VOLUME /root/.caddy
+VOLUME /.caddy
 WORKDIR /srv
 
 COPY Caddyfile /etc/Caddyfile
