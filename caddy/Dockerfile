@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM alpine:3.4
 
 ARG plugins=cors,filemanager,git,hugo,ipfilter,jwt,locale,mailout,minify,prometheus,ratelimit,realip,search,upload,cloudflare,digitalocean,dnsimple,dyn,gandi,googlecloud,namecheap,rfc2136,route53,vultr
 
