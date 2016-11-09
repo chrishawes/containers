@@ -1,8 +1,8 @@
-FROM alpine:3.4
+FROM alpine:latest
 
 ARG plugins=cors,filemanager,git,hugo,ipfilter,jwt,locale,mailout,minify,prometheus,ratelimit,realip,search,upload,cloudflare,digitalocean,dnsimple,dyn,gandi,googlecloud,namecheap,rfc2136,route53,vultr
 
-RUN apk --update add ca-certificates openssh-client git tar curl libcap && \
+RUN apk --update add openssh-client git tar curl libcap && \
     curl --silent --show-error --fail --location \
         --header "Accept: application/tar+gzip, application/x-gzip, application/octet-stream" -o - \
         "https://caddyserver.com/download/build?os=linux&arch=amd64&features=${plugins}" \
@@ -10,7 +10,8 @@ RUN apk --update add ca-certificates openssh-client git tar curl libcap && \
     chmod 0755 /usr/bin/caddy && \
     addgroup -S caddy && adduser -D -S -s /sbin/nologin -G caddy caddy && \
     setcap cap_net_bind_service=+ep /usr/bin/caddy && \
-    /usr/bin/caddy -version
+    /usr/bin/caddy -version && \
+    apk --update add ca-certificate
 
 
 EXPOSE 80 443 2015
