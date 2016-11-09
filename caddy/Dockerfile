@@ -10,8 +10,8 @@ RUN apk --update add openssh-client git tar curl libcap && \
     chmod 0755 /usr/bin/caddy && \
     addgroup -S caddy && adduser -D -S -s /sbin/nologin -G caddy caddy && \
     setcap cap_net_bind_service=+ep /usr/bin/caddy && \
-    /usr/bin/caddy -version && \
-    apk --update add ca-certificate
+    apk --update add ca-certificate && \
+    /usr/bin/caddy -version
 
 
 EXPOSE 80 443 2015
