@@ -5,7 +5,7 @@ RUN apk add --no-cache supervisor && \
     mkdir -p /etc/supervisor/conf.d && chown -R supervisor:supervisor /etc/supervisor && \
     /usr/bin/supervisord --version
 
-ADD supervisor.conf /etc/supervisor/supervisor.conf
+ADD supervisord.conf /etc/supervisor/supervisord.conf
 
 VOLUME ["/etc/supervisor/conf.d"]
 WORKDIR /etc/supervisor/conf.d
