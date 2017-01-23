@@ -1,6 +1,6 @@
 FROM alpine:edge
 
-RUN apk --update --no-cache add weechat ruby py2-pip python python-dev build-base py-dbus && \
+RUN apk --update --no-cache add weechat-perl ruby py2-pip python python-dev build-base py-dbus && \
     pip install --upgrade pip && \
     pip install python-potr && \
     pip install notify2 && \
