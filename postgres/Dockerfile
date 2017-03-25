@@ -15,7 +15,7 @@ RUN set -ex \
         gdal-dev geos-dev proj4-dev \
     && cd /usr/src/postgis \
     && ./autogen.sh \
-    && ./configure make make install \
+    && ./configure make && make install \
     && apk add --no-cache --virtual .postgis-rundeps json-c \
     && apk add --no-cache --virtual .postgis-rundeps-testing --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing \
         geos gdal proj4 \
