@@ -7,8 +7,12 @@ RUN mkdir -p /usr/src/php/ext/redis \
     && echo 'redis' >> /usr/src/php-available-exts \
     && docker-php-ext-install redis
 
-RUN apk add --update ca-certificates zlib-dev libpng-dev libressl-dev libsodium-dev git postgresql-dev && rm -rf /var/cache/apk/* \
-    && docker-php-ext-install gd pcntl mysqli pdo pdo_mysql pgsql sodium pdo_pgsql zip bcmath sockets posix shmop
+RUN apk add --update ca-certificates zlib-dev libpng-dev libressl-dev libsodium-dev git postgresql-dev autoconf gcc g++ make \
+    && pecl install apcu-5.1.9
+
+RUN docker-php-ext-enable apcu \
+    && docker-php-ext-install gd pcntl mysqli pdo pdo_mysql pgsql sodium pdo_pgsql zip bcmath sockets posix shmop \
+    && rm -rf /var/cache/apk/*
 
 EXPOSE 9000
 
